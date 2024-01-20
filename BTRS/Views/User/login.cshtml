@@ -1,0 +1,88 @@
+﻿
+<style>
+    form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .left {
+        width: 50%;
+    }
+
+        .left table {
+            width: 100%;
+        }
+
+        .left td {
+            padding: 10px;
+        }
+
+        .left input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #dc3545;
+        background-color: #dc3545;
+        border: none;
+        border-radius: 5px;
+    }
+
+        .btn:hover {
+            background-color: #dc3545;
+        }
+
+    .btn-outline-danger {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #dc3545;
+        border: 2px solid #dc3545;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }</style>
+
+@using (Html.BeginForm("login", "User", FormMethod.Post))
+{
+    <div class="left">
+        <table>
+            <tr>
+                <td>username</td>
+                <td>@Html.TextBox("username", null, new { type = "text" })</td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td>@Html.TextBox("password", null, new { type = "password" })</td>
+            </tr>
+        </table>
+    </div>
+   
+    @Html.TextBox("login", "login", new { @type = "submit" })
+    <a asp-action="signup" asp-controller="User" class="btn-outline-danger">signup</a>
+}
+@TempData["msg"]
+      
+
+

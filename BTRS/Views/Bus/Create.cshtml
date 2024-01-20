@@ -1,0 +1,52 @@
+﻿@model BTRS.Models.Bus
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Bus</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="captain_name" class="control-label"></label>
+                <input asp-for="captain_name" class="form-control" />
+                <span asp-validation-for="captain_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numOfSeats" class="control-label"></label>
+                <input asp-for="numOfSeats" class="form-control" />
+                <span asp-validation-for="numOfSeats" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+            <label class="control-label">Trip:</label>
+            <select name="TripID" id="TripID">
+            @for(int i = 0; i < ViewBag.Trip.Count; i++)
+            {
+            <option value=@ViewBag.Trip[i].ID>@ViewBag.Trip[i].destination</option>
+            }
+            </select>
+            </div>  
+              @* <div class="form-group">
+                <label class="control-label">TripID:</label>
+                <input name="TripID" id="TripID" class="form-control" />
+            </div>  *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div> 
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
